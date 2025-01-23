@@ -36,7 +36,21 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="App">
+      <header>
+        <button
+          id="close"
+          onClick={() => window.electron.sendFrameAction("CLOSE")}
+        />
+        <button
+          id="minimize"
+          onClick={() => window.electron.sendFrameAction("MINIMIZE")}
+        />
+        <button
+          id="maximize"
+          onClick={() => window.electron.sendFrameAction("MAXIMIZE")}
+        />
+      </header>
       <div style={{ height: 120 }}>
         <Chart data={activeUsages} maxDataPoints={10} />
       </div>
@@ -57,7 +71,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </div>
   );
 }
 
