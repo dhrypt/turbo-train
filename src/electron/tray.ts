@@ -1,11 +1,11 @@
 import { BrowserWindow, Menu, Tray, app } from "electron";
-import { getAssetsPath } from "./pathResolver.js";
+import { getAssetPath } from "./pathResolver.js";
 import path from "path";
 
 export function createTray(mainWindow: BrowserWindow) {
   const tray = new Tray(
     path.join(
-      getAssetsPath(),
+      getAssetPath(),
       process.platform === "darwin" ? "trayIconTemplate.png" : "trayIcon.png"
     )
   );
@@ -21,7 +21,10 @@ export function createTray(mainWindow: BrowserWindow) {
           }
         },
       },
-      { label: "Quit", click: () => app.quit() },
+      {
+        label: "Quit",
+        click: () => app.quit(),
+      },
     ])
   );
 }
